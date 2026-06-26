@@ -5,8 +5,9 @@
 **a. Initial design**
 
 - Briefly describe your initial UML design.
+    It would need to have pet owner, how many pets they have, what type of pet, what tasks need to be done, what is the priority of the task, how long the task is, and what time to do the task also the schedule itself (shoutout to TF -Alexander Mejia)
 - What classes did you include, and what responsibilities did you assign to each?
-
+    Class for pet owner, since we need to know who is using the app, see what is their history or plan for this pet and how many pets they are needing to scedule . Class for pet since we need to know what type of animal, what tasks it needs. Class for tasks, since we are tracking the priority, time management, and preferences of the owner. Class for the schedule since it will be holding all the task and needs of the pet and their owner perferences
 **b. Design changes**
 
 - Did your design change during implementation?

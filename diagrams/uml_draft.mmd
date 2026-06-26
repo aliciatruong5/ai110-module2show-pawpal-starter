@@ -1,0 +1,68 @@
+classDiagram
+    class PetOwner {
+        +String ownerId
+        +String name
+        +List~Pet~ pets
+        +Schedule schedule
+        +addPet(Pet pet) void
+        +removePet(String petId) void
+        +getPetCount() int
+        +viewSchedule() Schedule
+    }
+
+    class Pet {
+        +String petId
+        +String name
+        +PetType type
+        +int age
+        +List~Task~ tasks
+        +addTask(Task task) void
+        +removeTask(String taskId) void
+        +getTasks() List~Task~
+    }
+
+    class Task {
+        +String taskId
+        +String description
+        +Priority priority
+        +int durationMinutes
+        +Time preferredTime
+        +boolean isComplete
+        +markComplete() void
+        +updatePriority(Priority p) void
+        +reschedule(Time newTime) void
+    }
+
+    class Schedule {
+        +String scheduleId
+        +Date date
+        +List~Task~ orderedTasks
+        +addTask(Task task) void
+        +sortByPriority() List~Task~
+        +resolveConflicts() void
+        +generateDailyPlan() List~Task~
+    }
+
+    class PetType {
+        <<enumeration>>
+        DOG
+        CAT
+        BIRD
+        FISH
+        REPTILE
+        OTHER
+    }
+
+    class Priority {
+        <<enumeration>>
+        HIGH
+        MEDIUM
+        LOW
+    }
+
+    PetOwner "1" --> "0..*" Pet : owns
+    PetOwner "1" --> "1" Schedule : maintains
+    Pet "1" --> "0..*" Task : needs
+    Schedule "1" --> "0..*" Task : organizes
+    Pet --> PetType : has
+    Task --> Priority : has
